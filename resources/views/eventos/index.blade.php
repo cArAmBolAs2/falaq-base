@@ -17,7 +17,7 @@
                 <p class="card-text text-secondary">{{ $evento->descricao }}</p>
                 <div class="d-flex justify-content-between align-items-center mt-3">
                     <span class="badge bg-purple" style="background:#7c6af7;">
-                        {{ $evento->perguntas->count() }} perguntas
+                        {{ $evento->perguntas_count }} perguntas
                     </span>
                     <a href="{{ route('eventos.show', $evento->id) }}" class="btn btn-primary btn-sm">
                         Entrar no Evento &rarr;
@@ -27,5 +27,9 @@
         </div>
     </div>
     @endforeach
+</div>
+
+<div class="d-flex justify-content-center mt-2">
+    {{ $eventos->links() }}
 </div>
 @endsection
