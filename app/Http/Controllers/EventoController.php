@@ -15,16 +15,17 @@ class EventoController extends Controller
         return view('eventos.index', compact('eventos'));
     }
 
-    public function show($id)
-    {
-        $evento = Evento::findOrFail($id);
+  public function show($id)
+{
+    $evento = Evento::findOrFail($id);
 
-        $perguntas = $evento->perguntas()
-            ->latest()
-            ->paginate(10);
+    $perguntas = Pergunta::where('evento_id', $evento->id)
+        ->with('user')
+        ->latest()
+        ->paginate(10);
 
-        return view('eventos.show', compact('evento', 'perguntas'));
-    }
+    return view('eventos.show', compact('evento', 'perguntas'));
+}
 
     public function storePergunta(StorePerguntaRequest $request, $id)
     {
