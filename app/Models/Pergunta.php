@@ -16,4 +16,10 @@ class Pergunta extends Model
     {
         return $this->belongsTo(Evento::class);
     }
+
+    public function user(): BelongsTo
+{
+    return $this->belongsTo(User::class);
+}
+    
 }
